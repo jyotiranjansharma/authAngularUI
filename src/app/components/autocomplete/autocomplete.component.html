@@ -1,0 +1,22 @@
+<div class="card container">
+    <div class="label">
+        <label for="car">Search Car:</label>
+    </div>
+    <div>
+        <input id="car" #carSearchInput placeholder="Search Car By Name" class="form-control" type="text"
+            autocomplete="off">
+    </div>
+
+    <!--  DropDown Starts  -->
+    <div class="card" [hidden]="!showSearches">
+        <div class="search">
+            <div *ngFor="let car of searchedCars" tappable (click)="setCarName(car)"
+                class="search-result">
+                {{car}}
+            </div>
+        </div>
+        <p class="search" *ngIf="searchedCars && searchedCars.length <= 0 && !isSearching">No Car found</p>
+        <p class="search" [hidden]="!isSearching">Searching cars...</p>
+    </div>
+    <!--  DropDown Ends  -->
+</div>

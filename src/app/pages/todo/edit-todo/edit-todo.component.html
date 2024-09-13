@@ -1,0 +1,14 @@
+<div class="p-5 shadow-lg mx-auto">
+    <form [formGroup]="notesForm" class="flex flex-col" (ngSubmit)="update()">
+        <div class="flex mt-3 mb-1">
+            <input formControlName="title" class="p-2 border border-gray-300 rounded flex-1 mr-1" type="text" placeholder="title" >
+            <input formControlName="createdBy" class="p-2 border border-gray-300 rounded flex-1 mr-1" type="text" placeholder="created by" >
+            <input formControlName="noteType" class="p-2 border border-gray-300 rounded flex-1" type="text" placeholder="note type(e.g. sports, work, meeting, etc)" >
+        </div>
+        
+        <div class="flex flex-col mt-3 mb-1">
+            <textarea formControlName="details" class="p-2 border border-gray-300 rounded" type="text" placeholder="details" ></textarea>
+        </div>
+        <button  class="bg-cyan-500 p-2 rounded mt-3 text-white" type="submit">Update</button>
+    </form>
+</div>

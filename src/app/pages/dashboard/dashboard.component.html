@@ -1,0 +1,42 @@
+<div class="lg:w-6/12 mt-20 p-10 shadow-lg mx-auto my-auto mb-20">
+    <app-autocomplete (setcarNameEvent)="setCarName($event)"></app-autocomplete>
+    <h3 appHighlight="gray" class="text-3xl text-center font-semibold py-5">You are logged in to the system.</h3>
+    <!-- <h5  class="text-xl text-center font-semibold py-5" >Here are the current users.</h5> -->
+    <hr/>
+    <ul>
+        <ng-container *ngIf="postsData">
+            <h5 appHighlight class="text-xl text-center font-semibold py-5">This is the users data from localDB</h5><hr/>
+            <li *ngFor="let item of userData; trackBy: trackUserById">
+                {{item.firstname}}
+            </li>
+        </ng-container>
+        <hr/>
+        <ng-container *ngIf="postsData">
+            <h5 appHighlight class="text-xl text-center font-semibold py-5">This is the posts data</h5><hr/>
+            <li *ngFor="let item of postsData">
+                {{item.name || item.title}}
+            </li>
+        </ng-container>
+        <hr/>
+        <ng-container *ngIf="todosData">
+            <h5 appHighlight class="text-xl text-center font-semibold py-5">This is the todos data</h5><hr/>
+            <li *ngFor="let item of postsData">
+                {{item.name || item.title}}
+            </li>
+        </ng-container>
+        <hr/>
+        <ng-container *ngIf="namesAndUsernames">
+            <h5 appHighlight class="text-xl text-center font-semibold py-5">This is the names and user names</h5><hr/>
+            <div *ngFor="let item of namesAndUsernames" class="grid">
+                <div *ngFor="let name$ of item.names$" class="grid-item1">
+                    {{name$ | custom}}
+                </div>
+                
+                <div *ngFor="let username$ of item.userNames$" class="grid-item2">
+                    {{username$}}
+                </div>
+            </div>
+        </ng-container>
+    </ul>
+    
+</div> 

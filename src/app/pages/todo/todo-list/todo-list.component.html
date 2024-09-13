@@ -1,0 +1,76 @@
+<div class="bg-white py-8 mb-40">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl lg:mx-0">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the Notes</h2>
+            <p class="mt-2 text-lg leading-8 text-gray-600">Keep your lists safe.</p>
+        </div>
+        <button
+            class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+            [routerLink]="['/todoList/add']">
+            <span
+                class="relative px-2 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                Add a note
+            </span>
+        </button>
+        <!-- <button
+            class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+            [routerLink]="['/todoList']">
+            <span
+                class="relative px-2 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                Hide
+            </span>
+        </button> -->
+        <router-outlet></router-outlet>
+        <div
+            class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+            <article class="flex max-w-xl flex-col items-start justify-between" *ngFor="let note of notesList">
+                <div class="flex items-center gap-x-4 text-xs">
+                    <time datetime="2020-03-16" class="text-gray-500">{{note.createdAt | date | uppercase}}</time>
+                    <a href="#"
+                        class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{note.noteType
+                        | uppercase}}
+                    </a>
+                    <svg class="cursor-pointer h-8 w-8 text-black-500" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" (click)="onDeleteNote(note)">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    <svg class="cursor-pointer h-8 w-8 text-black-500" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" (click)="onUpdateNote(note)">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                </div>
+                <div class="group relative">
+                    <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                        <a href="#">
+                            <span class="absolute inset-0"></span>
+                            {{note.title | uppercase}}
+                        </a>
+                    </h3>
+                    <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{note.details | truncate: 50 }}</p>
+                </div>
+                <div class="relative mt-8 flex items-center gap-x-4">
+                    <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="" class="h-10 w-10 rounded-full bg-gray-50">
+                    <div class="text-sm leading-6">
+                        <p class="font-semibold text-gray-900">
+                            <a href="#">
+                                <span class="absolute inset-0"></span>
+                                {{note.createdBy | uppercase}}
+                            </a>
+                        </p>
+                        <p class="text-gray-600"></p>
+                    </div>
+                </div>
+
+
+            </article>
+        </div>
+
+        <div *ngFor="let item of notesList$ | async" class="text-center">
+            <span>{{item.title}}</span>
+        </div>
+        
+    </div>
+</div>

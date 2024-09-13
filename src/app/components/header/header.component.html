@@ -1,0 +1,29 @@
+<nav class="w-full bg-indigo-600 h-16 flex justify-between items-center px-10">
+    <div>
+        <span class="text-gray-200 text-4xl flex justify-start items-center cursor-pointer" routerLink="/home">
+            Excellent Services
+        </span>
+    </div>
+    <!-- <div *ngIf="isLogged">
+        <input type="text" placeholder="search" class="w-96 p-2 pl-9 rounded rounded-r-none text-gray-600">
+        <button class="bg-slate-400 p-2 rounded-r text-white outline-none outline-0">Search</button>
+    </div> -->
+    <div>
+        <ng-container *ngIf="!isLogged">
+            <span routerLink="/login" class="text-xl cursor-pointer text-gray-200 font-semibold m-3 hover:underline hover:text-indigo-200">Login</span>
+            <span routerLink="/register" class="text-xl cursor-pointer text-gray-200 font-semibold m-3 hover:underline hover:text-indigo-200">Register</span>
+            <span routerLink="/employee" class="text-xl cursor-pointer text-gray-200 font-semibold m-3 hover:underline hover:text-indigo-200">Employee Register</span>
+        </ng-container>
+        <!-- <ng-container *ngIf="isLogged; else elseBlock"> -->
+        <ng-container *ngIf="isLogged">
+            <span class="text-xl cursor-pointer text-gray-200 font-semibold m-3 hover:underline hover:text-indigo-200" routerLink="/dashboard">Dashboard</span>
+            <span class="text-xl cursor-pointer text-gray-200 font-semibold m-3 hover:underline hover:text-indigo-200" routerLink="/bar">Graph</span>
+            <span class="text-xl cursor-pointer text-gray-200 font-semibold m-3 hover:underline hover:text-indigo-200" routerLink="/todoList">Notes</span>
+            <span class="text-xl cursor-pointer text-gray-200 font-semibold m-3 hover:underline hover:text-indigo-200">Welcome {{userName}}</span>
+            <span class="text-xl cursor-pointer text-gray-200 font-semibold m-3 hover:underline hover:text-indigo-200" (click)="logout()">Logout</span>
+        </ng-container>
+        <!-- <ng-template #elseBlock>
+            This is where the ng template renders
+        </ng-template> -->
+    </div>
+</nav>
